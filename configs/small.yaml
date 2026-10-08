@@ -1,0 +1,31 @@
+model:
+  vocab_size: 32000
+  max_seq_len: 2048
+  d_model: 512
+  n_layers: 8
+  n_heads: 8
+  d_ff: 2048
+  dropout: 0.0
+  rope_theta: 10000.0
+
+training:
+  batch_size: 2
+  grad_accum_steps: 8
+  learning_rate: 0.0003
+  weight_decay: 0.1
+  warmup_steps: 500
+  max_steps: 10000
+  grad_clip: 1.0
+  log_every: 10
+  save_every: 500
+  seed: 42
+
+data:
+  train: data/train.txt
+  tokenizer: artifacts/tokenizer.json
+  seq_len: 2048
+
+runtime:
+  device: auto
+  dtype: bf16
+  output_dir: artifacts/checkpoints
