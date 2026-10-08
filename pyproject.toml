@@ -1,0 +1,24 @@
+[project]
+name = "coding-llm"
+version = "0.1.0"
+description = "Train a coding-focused language model from scratch."
+requires-python = ">=3.10"
+dependencies = [
+  "torch>=2.2",
+  "tokenizers>=0.19",
+  "numpy>=1.26",
+  "tqdm>=4.66",
+  "pyyaml>=6.0",
+]
+
+[project.scripts]
+coding-llm-train = "coding_llm.cli:train"
+coding-llm-generate = "coding_llm.cli:generate"
+coding-llm-eval = "coding_llm.cli:eval"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["coding_llm*"]
