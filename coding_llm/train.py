@@ -23,7 +23,7 @@ def train(config_path: str):
     if not len(ds): raise RuntimeError("Training dataset is empty or shorter than one sequence.")
     loader = DataLoader(ds, batch_size=cfg["training"]["batch_size"], shuffle=True, drop_last=True)
     if not len(loader): raise RuntimeError("Batch size is larger than the available dataset.")
-    opt = torch.optim.AdamW(model.parameters(), lr=cfg["training"]["learning_rate"], weight_decay=cfg["training"]["weight_decay"])
+    opt = torch.optim.AdamW(model.parameters(), lr=0.0, weight_decay=cfg["training"]["weight_decay"])
     base_lr = cfg["training"]["learning_rate"]
     grad_accum = cfg["training"]["grad_accum_steps"]
     use_amp = device.type == "cuda" and cfg["runtime"]["dtype"] in {"fp16", "bf16"}
